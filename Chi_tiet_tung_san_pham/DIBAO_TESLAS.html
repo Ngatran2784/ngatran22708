@@ -5,62 +5,66 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>XE ĐIỆN DIBAO TESLA S</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="/Javascript/sanpham.js" defer></script>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* Custom styling */
+        .product-colors {
+            display: flex;
+            list-style-type: none;
+            padding: 0;
+        }
+        
         .product-colors li {
-            display: inline-block;
             margin-right: 10px;
             cursor: pointer;
         }
         
-        .product-colors span {
+        .product-colors li span {
             display: block;
             width: 30px;
             height: 30px;
             border-radius: 50%;
-            border: 2px solid #eee;
+            border: 2px solid #ccc;
         }
         
         .product-colors li.active span {
             border: 2px solid #000;
         }
         
+        .small-img-group {
+            display: flex;
+            margin-top: 10px;
+        }
+        
         .small-img-col {
             flex-basis: 24%;
+            margin-right: 1%;
             cursor: pointer;
         }
         
-        .old-price {
-            text-decoration: line-through;
-            color: #6c757d;
+        .small-img-col img {
+            width: 100%;
         }
         
-        .table-specs {
-            font-size: 0.9rem;
+        .star.filled {
+            color: gold;
         }
         
         .star {
             color: #ccc;
-            font-size: 20px;
         }
         
-        .star.filled {
-            color: #ffc107;
-        }
-        
-        .cart-icon {
+        .cart-shopping {
             position: relative;
         }
         
         .cart-count {
             position: absolute;
-            top: -8px;
-            right: -8px;
-            background-color: #dc3545;
+            top: -10px;
+            right: -10px;
+            background-color: red;
             color: white;
             border-radius: 50%;
             width: 20px;
@@ -68,7 +72,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 0.7em;
+            font-size: 12px;
         }
         
         .avatar {
@@ -78,25 +82,23 @@
             object-fit: cover;
         }
         
-        .review {
-            border-bottom: 1px solid #eee;
-            padding: 15px 0;
+        .old-price {
+            text-decoration: line-through;
+            color: #999;
         }
     </style>
 </head>
 
 <body>
-    <!-- Navbar -->
+    <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
         <div class="container">
             <a class="navbar-brand" href="#">
                 <img src="/Ảnh đồ án/logo.png" alt="Logo" height="40">
             </a>
-            
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item">
@@ -121,23 +123,20 @@
                         <a class="nav-link" href="/Lienhe.html">LIÊN HỆ</a>
                     </li>
                 </ul>
-                
+                <form class="d-flex me-2">
+                    <input class="form-control me-2" type="search" placeholder="Nhập nội dung tìm kiếm...">
+                    <button class="btn btn-outline-success" type="submit">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </form>
                 <div class="d-flex align-items-center">
-                    <form class="d-flex me-3">
-                        <input class="form-control me-2" type="search" placeholder="Nhập nội dung tìm kiếm...">
-                        <button class="btn btn-outline-success" type="submit">
-                            <i class="fas fa-search"></i>
-                        </button>
-                    </form>
-                    
-                    <div class="me-3 cart-icon">
+                    <div class="cart-shopping me-3">
                         <a href="/gioHang.html" class="text-dark">
                             <i class="fa-solid fa-cart-shopping fs-5"></i>
                             <span class="cart-count">0</span>
                         </a>
                     </div>
-                    
-                    <div>
+                    <div class="user-info">
                         <a href="/Loginfull.html">
                             <img class="avatar" src="/Ảnh đồ án/meme.jpg" alt="User Avatar">
                         </a>
@@ -147,37 +146,34 @@
         </div>
     </nav>
 
-    <!-- Product Section -->
-    <section class="container py-5 mt-5">
-        <div class="row mt-5">
-            <!-- Product Images -->
-            <div class="col-lg-6 mb-4">
-                <img src="/Ảnh đồ án/Xe Điện Dibao Tesla S.jpg" id="MainImg" class="img-fluid mb-3 rounded" alt="Dibao Tesla S">
-                
-                <div class="row">
-                    <div class="col-3">
-                        <img src="/Ảnh đồ án/DIBAO_TESLA_S (màu đen).jpg" class="img-fluid small-img rounded" alt="Black Tesla S">
-                    </div>
-                    <div class="col-3">
-                        <img src="/Ảnh đồ án/Xe Điện Dibao Tesla S.jpg" class="img-fluid small-img rounded" alt="Blue Tesla S">
+    <!-- Product Details Section -->
+    <section class="py-5 mt-5">
+        <div class="container">
+            <div class="row">
+                <!-- Product Images -->
+                <div class="col-md-6 mb-4">
+                    <img src="/Ảnh đồ án/Xe Điện Dibao Tesla S.jpg" id="MainImg" class="img-fluid rounded" alt="Dibao Tesla S">
+                    <div class="small-img-group">
+                        <div class="small-img-col">
+                            <img src="/Ảnh đồ án/DIBAO_TESLA_S (màu đen).jpg" class="small-img img-fluid" alt="Dibao Tesla S Black">
+                        </div>
+                        <div class="small-img-col">
+                            <img src="/Ảnh đồ án/Xe Điện Dibao Tesla S.jpg" class="small-img img-fluid" alt="Dibao Tesla S Blue">
+                        </div>
                     </div>
                 </div>
-            </div>
-            
-            <!-- Product Details -->
-            <div class="col-lg-6">
-                <h2 class="fw-bold mb-4">XE ĐIỆN DIBAO TESLA S</h2>
-                
-                <div class="mb-4">
-                    <h5 class="text-danger fw-bold">18.390.000 VND</h5>
-                    <p class="old-price mb-0">18.890.000 VND</p>
-                </div>
-                
-                <p class="mb-4">Trải nghiệm công nghệ và sắc màu</p>
-                
-                <div class="mb-4">
-                    <h5 class="mb-3">Màu sắc:</h5>
-                    <ul class="product-colors list-unstyled mb-0">
+
+                <!-- Product Details -->
+                <div class="col-md-6">
+                    <h2 class="fw-bold">XE ĐIỆN DIBAO TESLA S</h2>
+                    <div class="mb-3">
+                        <span class="fw-bold fs-4 text-danger">18.390.000 VND</span>
+                        <span class="old-price ms-2">18.890.000 VND</span>
+                    </div>
+                    <p class="mb-4">Trải nghiệm công nghệ và sắc màu</p>
+                    
+                    <h5 class="mb-2">Màu sắc:</h5>
+                    <ul class="product-colors mb-4">
                         <li data-image="/Ảnh đồ án/DIBAO_TESLA_S (màu đen).jpg" onclick="changeProductImage(this)">
                             <span style="background-color: #000000;"></span>
                         </li>
@@ -185,112 +181,109 @@
                             <span style="background-color: #A1CEE1;"></span>
                         </li>
                     </ul>
-                </div>
-                
-                <div class="mb-4">
-                    <p class="text-success mb-2"><i class="fas fa-check-circle me-2"></i>Còn hàng</p>
                     
-                    <div class="mb-3">
-                        <label for="so_luong_DIBAO_TESLA_S" class="form-label">Số lượng:</label>
-                        <div class="input-group" style="max-width: 150px;">
-                            <button class="btn btn-outline-secondary" type="button" onclick="if(this.nextElementSibling.value > 1) this.nextElementSibling.value--;">-</button>
-                            <input type="number" id="so_luong_DIBAO_TESLA_S" class="form-control text-center" value="1" min="1">
-                            <button class="btn btn-outline-secondary" type="button" onclick="this.previousElementSibling.value++;">+</button>
-                        </div>
+                    <p class="mb-3 text-success">Còn hàng</p>
+                    
+                    <div class="mb-4">
+                        <label for="quantity" class="form-label">Số lượng</label>
+                        <input type="number" class="form-control w-25" id="so_luong_DIBAO_TESLA_S" value="1" min="1">
                     </div>
-                </div>
-                
-                <div class="d-grid gap-2">
-                    <button class="btn btn-outline-primary py-2" onclick="themvaogiohang(this)">
-                        <i class="fa fa-shopping-cart me-2"></i>Thêm vào giỏ hàng
-                    </button>
-                    <button class="btn btn-primary py-2">
-                        Mua ngay <i class="fas fa-arrow-right ms-2"></i>
-                    </button>
+                    
+                    <div class="d-grid gap-2 d-md-flex">
+                        <button class="btn btn-outline-dark me-md-2" type="button" onclick="themvaogiohang(this)">
+                            <i class="fa fa-shopping-cart me-2"></i>Thêm vào giỏ hàng
+                        </button>
+                        <button class="btn btn-dark" type="button">
+                            Mua ngay <i class="fas fa-arrow-right ms-2"></i>
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
-    
-    <!-- Product Information Tabs -->
-    <section class="container mb-5">
-        <ul class="nav nav-tabs" id="productInfoTabs" role="tablist">
-            <li class="nav-item" role="presentation">
-                <button class="nav-link active" id="info-tab" data-bs-toggle="tab" data-bs-target="#info" type="button" role="tab" aria-controls="info" aria-selected="true">
-                    Thông tin sản phẩm
-                </button>
-            </li>
-            <li class="nav-item" role="presentation">
-                <button class="nav-link" id="specs-tab" data-bs-toggle="tab" data-bs-target="#specs" type="button" role="tab" aria-controls="specs" aria-selected="false">
-                    Thông số kỹ thuật
-                </button>
-            </li>
-            <li class="nav-item" role="presentation">
-                <button class="nav-link" id="description-tab" data-bs-toggle="tab" data-bs-target="#description" type="button" role="tab" aria-controls="description" aria-selected="false">
-                    Mô tả sản phẩm
-                </button>
-            </li>
-            <li class="nav-item" role="presentation">
-                <button class="nav-link" id="reviews-tab" data-bs-toggle="tab" data-bs-target="#reviews" type="button" role="tab" aria-controls="reviews" aria-selected="false">
-                    Đánh giá
-                </button>
-            </li>
-        </ul>
-        
-        <div class="tab-content p-4 border border-top-0 rounded-bottom" id="productInfoTabsContent">
-            <!-- Thông tin sản phẩm -->
-            <div class="tab-pane fade show active" id="info" role="tabpanel" aria-labelledby="info-tab">
+
+    <!-- Product Information -->
+    <section class="py-4 bg-light">
+        <div class="container">
+            <h3 class="mb-4">THÔNG TIN SẢN PHẨM</h3>
+            <div class="mb-5">
                 <p>Dibao Tesla S là phiên bản xe máy điện bạn không thể nào bỏ qua nếu đang muốn tậu một chiếc xe điện giá rẻ với kiểu dáng sang chảnh cá tính. Trong số những dòng xe máy điện của Dibao thì Dibao Tesla S là phiên bản được rất nhiều bạn nữ yêu thích. Rất nhiều người đam mê vẻ đẹp hấp dẫn của những chiếc Vespa Ý đã "say nắng" chiếc Dibao Tesla S 2021. Với sự trở lại đầy rực rỡ, Dibao Tesla S đã được nâng cấp một loạt những tính năng hiện đại từ công nghệ đến động cơ. Mẫu xe máy điệp đến từ Đài Loan hứa hẹn sẽ khiến bạn mãn nhãn hài lòng</p>
             </div>
             
-            <!-- Thông số kỹ thuật -->
-            <div class="tab-pane fade" id="specs" role="tabpanel" aria-labelledby="specs-tab">
-                <div class="table-responsive">
-                    <table class="table table-bordered table-specs">
-                        <thead class="table-light">
-                            <tr>
-                                <th width="5%" class="text-center">TT</th>
-                                <th width="40%" class="text-center">Nội dung</th>
-                                <th width="55%" class="text-center">Thông số</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td class="text-center">1</td>
-                                <td>Trọng lượng bản thân</td>
-                                <td class="text-end">93kg</td>
-                            </tr>
-                            <tr>
-                                <td class="text-center">2</td>
-                                <td>Kích thước xe (D/R/C)</td>
-                                <td class="text-end">1.750mm x 700mm x 1.100mm</td>
-                            </tr>
-                            <tr>
-                                <td class="text-center">3</td>
-                                <td>Chiều cao yên</td>
-                                <td class="text-end">760mm</td>
-                            </tr>
-                            <tr>
-                                <td class="text-center">4</td>
-                                <td>Tải trọng</td>
-                                <td class="text-end">130kg – 150kg</td>
-                            </tr>
-                            <tr>
-                                <td class="text-center">5</td>
-                                <td>Động cơ điện, công suất (Max)</td>
-                                <td class="text-end">1.460W</td>
-                            </tr>
-                            <tr>
-                                <td class="text-center">6</td>
-                                <td>Bình điện</td>
-                                <td class="text-end">Tổ hợp Ắc quy 60V (5x12V) 21.6Ah</td>
-                            </tr>
-                            <tr>
-                                <td class="text-center">7</td>
-                                <td>Tốc độ tối đa</td>
-                                <td class="text-end">45-50km/h</td>
-                            </tr>
-                            <tr>
-                                <td class="text-center">8</td>
-                                <td>Quãng đường đi/lần sạc</td>
-                                <td class="text-end">60- 80km (tùy thuộc vào quãng đường và cân nặng)</td>
+            <div class="row">
+                <!-- Specifications -->
+                <div class="col-lg-6 mb-4">
+                    <div class="card">
+                        <div class="card-header bg-dark text-white">
+                            <h4 class="mb-0">Thông số kỹ thuật</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th width="10%">TT</th>
+                                            <th width="40%">Nội dung</th>
+                                            <th width="50%">Thông số</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>Trọng lượng bản thân</td>
+                                            <td class="text-end">93kg</td>
+                                        </tr>
+                                        <tr>
+                                            <td>2</td>
+                                            <td>Kích thước xe (D/R/C)</td>
+                                            <td class="text-end">1.750mm x 700mm x 1.100mm</td>
+                                        </tr>
+                                        <tr>
+                                            <td>3</td>
+                                            <td>Chiều cao yên</td>
+                                            <td class="text-end">760mm</td>
+                                        </tr>
+                                        <tr>
+                                            <td>4</td>
+                                            <td>Tải trọng</td>
+                                            <td class="text-end">130kg – 150kg</td>
+                                        </tr>
+                                        <tr>
+                                            <td>5</td>
+                                            <td>Động cơ điện, công suất (Max)</td>
+                                            <td class="text-end">1.460W</td>
+                                        </tr>
+                                        <tr>
+                                            <td>6</td>
+                                            <td>Bình điện</td>
+                                            <td class="text-end">Tổ hợp Ắc quy 60V (5x12V) 21.6Ah</td>
+                                        </tr>
+                                        <tr>
+                                            <td>7</td>
+                                            <td>Tốc độ tối đa</td>
+                                            <td class="text-end">45-50km/h</td>
+                                        </tr>
+                                        <tr>
+                                            <td>8</td>
+                                            <td>Quãng đường đi/lần sạc</td>
+                                            <td class="text-end">60-80km (tùy thuộc vào quãng đường di chuyển và tải trọng)</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product Description -->
+                <div class="col-lg-6">
+                    <div class="card">
+                        <div class="card-header bg-dark text-white">
+                            <h4 class="mb-0">MÔ TẢ SẢN PHẨM</h4>
+                        </div>
+                        <div class="card-body">
+                            <h5>Động cơ bền bỉ và mạnh mẽ:</h5>
+                            <p>Đây là một đặc điểm thường thấy từ những mẫu xe đến từ nhà Dibao. Dibao Tesla Chic Q sở hữu động cơ gồm ắc quy 60V (5x12V) 23Ah cho công suất lớn nhất lên tới 1.500W và vận tốc lớn nhất mà chiếc xe có thể đạt được là 55km/h, thật ấn tượng phải không nào?</p>
+                            
+                            <h5>An toàn luôn được đặt lên hàng đầu:</h5>
+                            <p>Tuy có khả năng vận hành khá "khủng" so với những mẫu xe cùng phân khúc nhưng trải nghiệm đi xe của Dibao Tesla Chic vẫn rất mượt mà nhờ hệ thống giảm xóc tối tân. Tính năng an toàn cũng là điểm đáng lưu ý ở mẫu xe này. Dibao Tesla Chic được trang bị lốp không săm 90/90-10 giúp giảm trơn trượt tới mức tối đa khi di chuyển trên đường
